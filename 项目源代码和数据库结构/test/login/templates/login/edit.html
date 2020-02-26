@@ -1,0 +1,37 @@
+<!--作者：昝良士、张晨旭、何岷勋 创建时间：2019.8.23 最后修改时间：2019.9.10-->
+{% extends 'login/base.html' %}
+ 
+{% block title %}我的信息{% endblock %}
+ 
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>编辑我的信息</h1>
+    <div class="row">
+        <div class="col-md-6" >
+        <form class="form-horizontal" action="." method="post">{% csrf_token %}
+            <div class="row">
+                <div class="col-md-4 text-right"><span>用户名:</span></div>
+                <div class="col-md-8 text-left">{{user.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-right"><span>邮箱:</span></div>
+                <div class="col-md-8 text-left">{{change_form.new_email}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-right"><span>电话:</span></div>
+                <div class="col-md-8 text-left">{{change_form.new_phone}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-right"><span>性别:</span></div>
+                <div class="col-md-8 text-left">{{user.sex}}</div>
+            </div>
+            <div class="row">
+                <input type="submit" class="btn btn-primary btn-lg" value="提交">
+            </div>
+        </form>
+        </div>
+
+    </div>
+ 
+</div>
+{% endblock %}

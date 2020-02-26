@@ -1,0 +1,134 @@
+<!--作者：昝良士、张晨旭、何岷勋 创建时间：2019.8.29 最后修改时间：2019.9.10-->
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+<!-- Title -->
+<title>首页</title>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="static/css/superfish.css">
+<link rel="stylesheet" href="static/css/slicknav.css">
+<link rel="stylesheet" href="static/css/animate.css">
+<link rel="stylesheet" href="static/css/jquery.bxslider.css">
+<link rel="stylesheet" href="static/css/hover.css">
+<link rel="stylesheet" href="static/css/magnific-popup.css">
+<link rel="stylesheet" href="static/css/spacing.css">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/responsive.css">
+
+
+
+
+<body>
+
+<div id="preloader">
+	<div id="status"></div>
+</div>
+
+<div class="page-wrapper">
+
+	<!-- Top Bar Start -->
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 top-contact">
+					<div class="list"><em class="fa fa-envelope"></em> <a> wotainanle@email.com</a></div>
+					<div class="list"><em class="fa fa-phone"></em> 12580 </div>
+                    <li class="nav-item">
+                            {% if request.session.is_login %}
+                                <a class="button-success pure-button" href="/information/">{{ request.session.user_name}}</a>
+                                <a class="button-success pure-button" href="/logout/">退出</a>
+                            {% else %}
+                                <a class="button-success pure-button" href="/register/">注册</a>
+                                <a class="button-success pure-button" href="/login/">登录</a>
+                            {% endif %}
+                    </li>
+				</div>
+            </div>
+		</div>
+	</div>
+	<!-- Top Bar End -->
+
+	<!-- Slider Start -->
+<section class="main-slider">
+  <div class="slide-single">
+			<div class="overlay"></div>
+    <div class="text">
+			<div class="this-item">
+				  <h2 class="text-center"><strong>欢迎访问</strong></h2>
+				</div>
+		<div class="this-item">
+				<h2 class="text-center"><strong>城市房价分析预测系统</strong></h2>
+				</div>
+		  </div>
+	  <div>&nbsp</div>
+<div>&nbsp</div>
+	  <div class="col-lg-1 col-lg-offset-4"><p class="index.html text-center"><a href="compare.html">对比</a></p> </div>
+	  <div class="col-lg-offset-1 col-lg-3"><p class="index.html text-center"><a href="predict.html">预测</a></p> </div>
+	 <div class="this-item col-lg-offset-3 col-lg-6">
+		 
+					
+				</div>
+		</div>
+	</section>
+	<!-- Slider End -->
+	
+	<div>&nbsp</div>
+	<div class="why-choose-us bg-gray">
+		<div class="container">
+		  <div class="row">
+<div class="col-md-12">
+				    <h1><strong>请选择您想要查询的城市</strong></h1>
+                    <form role="search" class="col" method="post">
+                    {% csrf_token %}
+					    <input type="text" style = "height:58px;width:225px;;border-style: dashed;border-color: #0E79DD;border-width: 2px " class="this-item col-lg-offset-4 col-lg-4" placeholder="搜索您想要查询的城市" name = "city_Info">
+                        <button class="btn btn-default" type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+						<div>
+						  <h2 class="text-left">热门查询城市:</h2>
+						</div>
+                    </form>
+                    <h1 style="width: 180px;height:25px;float: left"><a href="indexbj.html">北京</a></h1>
+	                <h1 style="width: 180px;height:25px;float: left"><a href="indexsh.html">上海</a></h1>
+                    <h1 style="width: 180px;height:25px;float: left"><a href="indexnj.html">南京</a></h1>
+	                <h1 style="width: 180px;height:25px;float: left"><a href="indexsu.html">苏州</a></h1>
+	                <h1 style="width: 180px;height:25px;float: left"><a href="indexgz.html">广州</a></h1>
+	                <h1 style="width: 180px;height:25px;float: left"><a href="indexsz.html">深圳</a></h1>
+              
+
+<!-- Scripts -->
+                <script src="static/js/jquery-2.2.4.min.js"></script>
+                <script src="static/js/bootstrap.min.js"></script>
+                <script src="static/js/jquery-ui.min.js"></script>
+                <script src="static/js/bootstrap-datepicker.min.js"></script>
+                <script src="static/js/hoverIntent.js"></script>
+                <script src="static/js/superfish.js"></script>
+                <script src="static/js/jquery.slicknav.js"></script>
+                <script src="static/js/owl.carousel.min.js"></script>
+                <script src="static/js/owl.animate.js"></script>
+                <script src="static/js/jquery.bxslider.min.js"></script>
+                <script src="static/js/jquery.mixitup.min.js"></script>
+                <script src="static/js/jquery.magnific-popup.min.js"></script>
+                <script src="static/js/waypoints.min.js"></script>
+                <script src="static/js/jquery.counterup.min.js"></script>
+                <script src="static/js/modernizr.min.js"></script>
+                <script src="static/js/custom.js"></script>
+          </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+

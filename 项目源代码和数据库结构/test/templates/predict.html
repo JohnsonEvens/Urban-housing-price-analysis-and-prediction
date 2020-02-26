@@ -1,0 +1,277 @@
+﻿<!--作者：昝良士、张晨旭、何岷勋 创建时间：2019.9.2 最后修改时间：2019.9.10--><!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+<!-- Title -->
+<title>预测</title>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="static/css/superfish.css">
+<link rel="stylesheet" href="static/css/slicknav.css">
+<link rel="stylesheet" href="static/css/animate.css">
+<link rel="stylesheet" href="static/css/jquery.bxslider.css">
+<link rel="stylesheet" href="static/css/hover.css">
+<link rel="stylesheet" href="static/css/magnific-popup.css">
+<link rel="stylesheet" href="static/css/spacing.css">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/responsive.css">
+	</head>
+
+<header style="background-color:rgba(86,162,209,1.00)">
+<form role="predictSearch" class="col" action="/predict" method="get">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 logo col-lg-4 col-lg-offset-5">
+					<a href="/"><img src="static/img/logo.png" alt=""></a>
+				</div>
+				<div class="col-md-9 col-sm-9 nav-wrapper col-lg-2">
+					<!-- Nav Start -->
+					<nav>
+						<ul class="sf-menu" id="menu">
+							<li class="active"><a href="/">回到首页</a></li>
+						</ul>
+					</nav>
+					<!-- Nav End -->
+				</div>
+			</div>
+		</div>
+	</form>
+	</header>
+
+<body>
+
+<div id="preloader">
+	<div id="status"></div>
+</div>
+
+<form class="page-wrapper">
+
+	<!-- Top Bar Start -->
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 top-contact">
+					<div class="list"><em class="fa fa-envelope"></em> <a> wotainanle@email.com</a></div>
+					<div class="list"><em class="fa fa-phone"></em> 12580 </div>
+                                        <li class="nav-item">
+                            {% if request.session.is_login %}
+                                <a class="button-success pure-button" href="/information/">{{ request.session.user_name}}</a>
+                                <a class="button-success pure-button" href="/logout/">退出</a>
+                            {% else %}
+                                <a class="button-success pure-button" href="/register/">注册</a>
+                                <a class="button-success pure-button" href="/login/">登录</a>
+                            {% endif %}
+                    </li>
+				</div>
+            </div>
+		</div>
+	</div>
+	<!-- Top Bar End -->
+
+	<!-- Slider Start -->
+<section class="main-slider">
+  <div class="slide-single">
+			<div class="overlay"></div>
+    <div class="text">
+			<div style="width: 100%;height: auto">
+				<h1 style="text-align: center;color: white;font-size: 40px;">房价预测</h1>
+		</div>
+			<div style="width: auto;height: 50px;">
+                <p style="text-align:center;color: red;font-size: 2em;">{{ error_msg }}</p>
+            </div>
+	        <div style="width: 100%;height: auto">
+		<input type="text" name="predictsc" style="height: 60px;width: 225px;border-style: dashed;border-color: #0E79DD;border-width: 2px" placeholder="输入您想预测的小区名" >
+		</div>
+		  </div>
+		</div>
+	</section>
+
+    <!-- properties Search End -->
+<div class="search">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<form style="font-size: 20px;" action="#">
+<div class="page-header" style="background-color:aliceblue;width: auto;height:90px;">
+     <h1 class="text-center col-lg-offset-0 col-lg-12"><strong>请选择影响房价的因素</strong></h1>
+</div>
+	<div>&nbsp;</div>
+	<div>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有学校未来一年是否会建学校</strong>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span>
+<input name="radio1" id="s1" type="radio" value="1">   <label for="s1">是</label>
+<input name="radio1" id="s2" type="radio" value="0">   <label for="s2">否</label>
+</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有地铁站/未来一年是否会建地铁站</strong> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input name="radio2" id="us1" type="radio" value="us">   <label for="us1">是</label>
+<input name="radio2" id="us2" type="radio" value="us">   <label for="us2">否</label>
+</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有医院/未来一年是否会建医院</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; </span>
+<input name="radio3" id="h1" type="radio" value="h">   <label for="h1">是</label>
+<input name="radio3" id="h2" type="radio" value="h">   <label for="h2">否</label></p></center>
+<center><p class="col-lg-12"><span class="style1">  <strong>周围是否有商场/未来一年是否会建商场</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span>
+<input name="radio4" id="sm1" type="radio" value="sm">   <label for="sm1">是</label>
+<input name="radio4" id="sm2" type="radio" value="sm">   <label for="sm2">否</label>
+	</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有公园/未来一年是否会建公园</strong>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </span>
+<input name="radio5" id="p1" type="radio" value="p">   <label for="p1">是</label>
+<input name="radio5" id="p2" type="radio" value="p">   <label for="p2">否</label>
+</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有高压电塔/未来一年是否会建高压电塔</strong> &nbsp; &nbsp; &nbsp;&nbsp; </span>
+<input name="radio6" id="vt1" type="radio" value="vt">   <label for="vt1">是</label>
+<input name="radio6" id="vt2" type="radio" value="vt">   <label for="vt2">否</label>
+</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有铁路/未来一年是否会建铁路</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; </span>
+<input name="radio7" id="rt1" type="radio" value="rt">   <label for="rt1">是</label>
+<input name="radio7" id="rt2" type="radio" value="rt">   <label for="rt2">否</label>
+	</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有污水厂/未来一年是否会建污水厂</strong> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; 
+<input name="radio8" id="dw1" type="radio" value="dw">   <label for="dw1">是</label>
+<input name="radio8" id="dw2" type="radio" value="dw">   <label for="dw2">否</label>
+</p></center>
+<center><p class="col-lg-12"><span class="style1"><strong>周围是否有化工厂/未来一年是否会建化工厂</strong> </span>&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
+<input name="radio9" id="cf1" type="radio" value="cf">   <label for="cf1">是</label>
+<input name="radio9" id="cf2" type="radio" value="cf">   <label for="cf2">否</label>
+	</p></center>
+<center><p class="col-lg-12"><span class="style1">  <strong>周围是否有垃圾站/未来一年是否会建垃圾站</strong>  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span>
+<input name="radio10" id="g1" type="radio" value="g">   <label for="g1">是</label>
+<input name="radio10" id="g2" type="radio" value="g">   <label for="g2">否</label>
+</p></center>
+	</div>
+	<div style="width: 17%;height: 100px;float: right;background-color: rgba(242,243,243,1.00)"></div>
+	</div>
+	</div>
+	<div style="text-align: center;">
+	<button class="" type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color:rgba(42,187,103,1.00);color: white;border-radius: 20px;">预测</button>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+
+    {% if result and result.price != '价格待定' and result.unit != ' 万/套(总价)' %}
+        <div class="properties">
+		<div class="container">
+        <div class="page-header" style="background-color:#F0F0F0;width: auto;height:75px;">
+        <h2 class="text-center">{{result.properties}}小区房屋的当前价格为</h2>
+  <label for="dj"></label>
+  <p name="dj" id="dj"  style="display: inline;font-size: 20px;">{{result.price}}{{ result.unit }}</p>
+
+  </div>
+</div>
+	<!-- Slider End -->
+
+<div class="page-header" style="background-color:white;width: auto;height:45px;">
+<h1 class="text-center col-lg-offset-0 col-lg-12"><strong>根据您的选择，我们对该小区房价的预测为</strong></h1>
+</div>
+</div>
+</form>
+ <div style="width: 10%;height: 600px;float: left;"></div>
+<div id="yuce" style="height:400px;width: 80%;float: left;"></div>
+<div style="width: 10%;height: 600px;float:right;"></div>
+
+<!-- Scripts -->
+<script src="static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('yuce'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '房价预测',
+        subtext: '请以实际为准'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: false},
+            dataView : {show: false, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: false}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['2019.9','2019.10','2019.11','2019.12','2020.1','2020.2','2020.3','2020.4','2020.5','2020.6','2020.7','2020.8','2020.9','2020.10','2020.11','2020.12','2021.1','2021.2','2021.3','2021.4','2021.5','2021.6','2021.7','2021.8']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min : {{ minPrice }},
+            axisLabel : {
+                formatter: '{value} '
+            }
+        }
+    ],
+    dataZoom: {
+        show: true,
+        start : 0,
+      	showDetail: true
+    },
+    series : [
+        {
+            name:'房价',
+            type:'line',
+            data:{{list}},
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    {% endif %}
+		
+
+<script src="static/js/jquery-2.2.4.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/jquery-ui.min.js"></script>
+<script src="static/js/bootstrap-datepicker.min.js"></script>
+<script src="static/js/hoverIntent.js"></script>
+<script src="static/js/superfish.js"></script>
+<script src="static/js/jquery.slicknav.js"></script>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="static/js/owl.animate.js"></script>
+<script src="static/js/jquery.bxslider.min.js"></script>
+<script src="static/js/jquery.mixitup.min.js"></script>
+<script src="static/js/jquery.magnific-popup.min.js"></script>
+<script src="static/js/waypoints.min.js"></script>
+<script src="static/js/jquery.counterup.min.js"></script>
+<script src="static/js/modernizr.min.js"></script>
+<script src="static/js/custom.js"></script>
+
+</body>
+
+</html>
+

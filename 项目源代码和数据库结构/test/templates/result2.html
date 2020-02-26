@@ -1,0 +1,649 @@
+﻿<!--作者：昝良士、张晨旭、何岷勋 创建时间：2019.8.29 最后修改时间：2019.9.10-->
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+<!-- Title -->
+<title>主页面</title>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="static/css/superfish.css">
+<link rel="stylesheet" href="static/css/slicknav.css">
+<link rel="stylesheet" href="static/css/animate.css">
+<link rel="stylesheet" href="static/css/jquery.bxslider.css">
+<link rel="stylesheet" href="static/css/hover.css">
+<link rel="stylesheet" href="static/css/magnific-popup.css">
+<link rel="stylesheet" href="static/css/spacing.css">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/responsive.css">
+
+
+<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 logo col-lg-4 col-lg-offset-5">
+					<a href="indexnj.html"><img src="/static/img/logo.png" alt=""></a>
+				</div>
+				<div class="col-md-9 col-sm-9 nav-wrapper col-lg-2">
+					<!-- Nav Start -->
+					<nav>
+						<ul class="sf-menu" id="menu">
+							<li class="active"><a href="/">回到首页</a></li>
+						</ul>
+					</nav>
+					<!-- Nav End -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+<body>
+
+<div id="preloader">
+	<div id="status"></div>
+</div>
+
+<div class="page-wrapper">
+
+	<!-- Top Bar Start -->
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 top-contact">
+					<div class="list"><em class="fa fa-envelope"></em> <a> wotainanle@email.com</a></div>
+					<div class="list"><em class="fa fa-phone"></em> 12580 </div>
+                     <li class="nav-item">
+                            {% if request.session.is_login %}
+                                <a class="button-success pure-button" href="/information/">{{ request.session.user_name}}</a>
+                                <a class="button-success pure-button" href="/logout/">退出</a>
+                            {% else %}
+                                <a class="button-success pure-button" href="/register/">注册</a>
+                                <a class="button-success pure-button" href="/login/">登录</a>
+                            {% endif %}
+                    </li>
+				</div>
+            </div>
+		</div>
+	</div>
+	<!-- Top Bar End -->
+
+    <!-- Slider Start -->
+	<section class="main-slider">
+		<div class="slide-single">
+			<div class="overlay"></div>
+		  <div class="text">
+				<div class="this-item">
+				  <h2 class="text-center"><strong>欢迎来到{{s_city}}城市房价分析预测系统</strong></h2>
+				</div>
+				<div class="this-item col-lg-offset-3 col-lg-6">
+					<form role="search" class="col" action="/result1" method="get">
+					    <input type="text" style = "height:58px;width:225px" class="this-item col-lg-offset-4 col-lg-4" placeholder="搜索您心仪的小区" name = "search_Info">
+                        {% if s_city == "南京" %}
+                            <button class="" name = 'searchCity' value = '南京' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "北京" %}
+                            <button class="" name = 'searchCity' value = '北京' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "成都" %}
+                            <button class="" name = 'searchCity' value = '成都' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "长沙" %}
+                            <button class="" name = 'searchCity' value = '长沙' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "广州" %}
+                            <button class="" name = 'searchCity' value = '广州' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "杭州" %}
+                            <button class="" name = 'searchCity' value = '杭州' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "南昌" %}
+                            <button class="" name = 'searchCity' value = '南昌' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "上海" %}
+                            <button class="" name = 'searchCity' value = '上海' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "苏州" %}
+                            <button class="" name = 'searchCity' value = '苏州' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "深圳" %}
+                            <button class="" name = 'searchCity' value = '深圳' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "天津" %}
+                            <button class="" name = 'searchCity' value = '天津' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "太原" %}
+                            <button class="" name = 'searchCity' value = '太原' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "武汉" %}
+                            <button class="" name = 'searchCity' value = '武汉' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% elif s_city == "无锡" %}
+                            <button class="" name = 'searchCity' value = '无锡' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                        {% endif %}
+
+                    </form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Slider End -->
+
+	<!-- properties Search End -->
+   <form role="houseSelect" class="col" action="/result2" method="get">
+	<div class="search">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form action="#">
+					  <div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-3">
+							<div class="single-field">
+								<h4><input type ='text' name = 'city' value = '{{s_city}}' style="background-color: #f2f3f3;width: 35px;height: auto;">区域:</h4>
+								<div class="select-arrow">
+									<select name="region">
+                                        {% if s_city == '南京'%}
+											<optgroup id="city-optgroup-Nanjing" label="南京">
+											<option value="all" label="全部">全部</option>
+											<option value="鼓楼" label="鼓楼">鼓楼</option>
+											<option value="来安县" label="来安县">来安县</option>
+											<option value="玄武" label="玄武">玄武</option>
+											<option value="秦淮" label="秦淮">秦淮</option>
+											<option value="建邺" label="建邺">建邺</option>
+											<option value="和县" label="和县">和县</option>
+											<option value="雨花台" label="雨花台">雨花台</option>
+											<option value="栖霞" label="栖霞">栖霞</option>
+										    <option value="江宁" label="江宁">江宁</option>
+											<option value="浦口" label="浦口">浦口</option>
+											<option value="六合" label="六合">六合</option>
+											<option value="高淳" label="高淳">高淳县</option>
+											<option value="溧水" label="溧水">溧水县</option>
+                                            <option value="句容" label="句容">句容</option>
+                                            <option value="南谯区" label="南谯区">南谯区</option>
+										    </optgroup>
+                                        {% elif s_city == '北京' %}
+                                            <optgroup id="city-optgroup-Beijing" label="北京">
+											<option value="all" label="全部">全部</option>
+											<option value="东城" label="东城">东城</option>
+											<option value="西城" label="西城">西城</option>
+											<option value="朝阳" label="朝阳">朝阳</option>
+											<option value="海淀" label="海淀">海淀</option>
+											<option value="丰台" label="丰台">丰台</option>
+											<option value="石景山" label="石景山">石景山</option>
+											<option value="通州" label="通州">通州</option>
+											<option value="昌平" label="昌平">昌平</option>
+										    <option value="大兴" label="大兴">大兴</option>
+											<option value="亦庄开发区" label="亦庄开发区">亦庄开发区</option>
+											<option value="顺义" label="顺义">顺义</option>
+											<option value="房山" label="房山">房山</option>
+											<option value="门头沟" label="门头沟">门头沟</option>
+                                            <option value="平谷" label="平谷">平谷</option>
+                                            <option value="怀柔" label="怀柔">怀柔</option>
+                                            <option value="密云" label="密云">密云</option>
+                                            <option value="延庆" label="延庆">延庆</option>
+										    </optgroup>
+                                        {% elif s_city == '天津' %}
+                                            <optgroup id="city-optgroup-Tianjin" label="天津">
+											<option value="all" label="全部">全部</option>
+											<option value="宝坻" label="宝坻">宝坻</option>
+											<option value="滨海新区" label="滨海新区">滨海新区</option>
+											<option value="静海" label="静海">静海</option>
+											<option value="蓟州" label="蓟州">蓟州</option>
+											<option value="宁河" label="宁河">宁河</option>
+											<option value="武清" label="武清">武清</option>
+											<option value="和平" label="和平">和平</option>
+											<option value="南开" label="南开">南开</option>
+										    <option value="河西" label="河西">河西</option>
+											<option value="河北" label="河北">河北</option>
+											<option value="河东" label="河东">河东</option>
+											<option value="红桥" label="红桥">红桥</option>
+											<option value="西青" label="西青">西青</option>
+                                            <option value="北辰" label="北辰">北辰</option>
+                                            <option value="东丽" label="东丽">东丽</option>
+                                            <option value="津南" label="津南">津南</option>
+											<option value="塘沽" label="塘沽">塘沽</option>
+                                            <option value="开发区" label="开发区">开发区</option>
+                                            <option value="海河教育区" label="海河教育区">海河教育区</option>
+										    </optgroup>
+                                        {% elif s_city == '上海' %}
+                                            <optgroup id="city-optgroup-Shanghai" label="上海">
+											<option value="all" label="全部">全部</option>
+											<option value="静安" label="静安">静安</option>
+											<option value="徐汇" label="徐汇">徐汇</option>
+											<option value="黄浦" label="黄浦">黄浦</option>
+											<option value="长宁" label="长宁">长宁</option>
+											<option value="普陀" label="普陀">普陀</option>
+											<option value="浦东" label="浦东">浦东</option>
+											<option value="宝山" label="宝山">宝山</option>
+											<option value="闸北" label="闸北">闸北</option>
+										    <option value="虹口" label="虹口">虹口</option>
+											<option value="杨浦" label="杨浦">杨浦</option>
+											<option value="闵行" label="闵行">闵行</option>
+											<option value="嘉定" label="嘉定">嘉定</option>
+											<option value="松江" label="松江">松江</option>
+                                            <option value="青浦" label="青浦">青浦</option>
+                                            <option value="奉贤" label="奉贤">奉贤</option>
+                                            <option value="金山" label="金山">金山</option>
+											<option value="崇明" label="崇明">崇明</option>
+                                            <option value="上海周边" label="上海周边">上海周边</option>
+										    </optgroup>
+                                        {% elif s_city == '成都'%}
+                                            <optgroup id="city-optgroup-Chengdu" label="成都">
+											<option value="all" label="全部">全部</option>
+											<option value="锦江" label="锦江">锦江</option>
+											<option value="青羊" label="青羊">青羊</option>
+											<option value="武侯" label="武侯">武侯</option>
+											<option value="高新" label="高新">高新</option>
+											<option value="成华" label="成华">成华</option>
+											<option value="金牛" label="金牛">金牛</option>
+											<option value="天府新区" label="天府新区">天府新区</option>
+											<option value="高新西" label="高新西">高新西</option>
+										    <option value="双流" label="双流">双流</option>
+											<option value="温江" label="温江">温江</option>
+											<option value="郸都" label="郸都">郸都</option>
+											<option value="龙泉驿" label="龙泉驿">龙泉驿</option>
+											<option value="新都" label="新都">新都</option>
+                                            <option value="青白江" label="青白江">青白江</option>
+                                            <option value="金堂" label="金堂">金堂</option>
+                                            <option value="大邑" label="大邑">大邑</option>
+											<option value="蒲江" label="蒲江">蒲江</option>
+											<option value="新津" label="新津">新津</option>
+											<option value="彭州" label="彭州">彭州</option>
+											<option value="邛崃" label="邛崃">邛崃</option>
+											<option value="崇州" label="崇州">崇州</option>
+										    <option value="都江堰" label="都江堰">都江堰</option>
+											<option value="简阳" label="简阳">简阳</option>
+											<option value="天府新区南区" label="天府新区南区">天府新区南区</option>
+											<option value="德阳" label="德阳">德阳</option>
+											<option value="乐山" label="乐山">乐山</option>
+                                            <option value="眉山" label="眉山">眉山</option>
+                                            <option value="资阳" label="资阳">资阳</option>
+										    </optgroup>
+                                        {% elif s_city == '杭州'%}
+                                            <optgroup id="city-optgroup-Hangzhou" label="杭州">
+											<option value="all" label="全部">全部</option>
+											<option value="西湖" label="西湖">西湖</option>
+											<option value="下城" label="下城">下城</option>
+											<option value="江干" label="江干">江干</option>
+											<option value="拱墅" label="拱墅">拱墅</option>
+											<option value="上城" label="上城">上城</option>
+											<option value="滨江" label="滨江">滨江</option>
+											<option value="余杭" label="余杭">余杭</option>
+											<option value="萧山" label="萧山">萧山</option>
+										    <option value="桐庐" label="桐庐">桐庐</option>
+											<option value="淳安" label="淳安">淳安</option>
+											<option value="建德" label="建德">建德</option>
+											<option value="富阳" label="富阳">富阳</option>
+											<option value="临安" label="临安">临安</option>
+                                            <option value="海宁市" label="海宁市">海宁市</option>
+                                            <option value="大江东" label="大江东">大江东</option>
+                                            <option value="钱塘新区" label="钱塘新区">钱塘新区</option>
+											<option value="嘉兴" label="嘉兴">嘉兴</option>
+                                            <option value="湖州" label="湖州">湖州</option>
+                                            <option value="绍兴" label="绍兴">绍兴</option>
+										    </optgroup>
+                                        {% elif s_city == '长沙'%}
+                                            <optgroup id="city-optgroup-Changsha" label="长沙">
+											<option value="all" label="全部">全部</option>
+											<option value="望城" label="望城">望城</option>
+											<option value="宁乡" label="宁乡">宁乡</option>
+											<option value="浏阳" label="浏阳">浏阳</option>
+											<option value="长沙县" label="长沙县">长沙县</option>
+											<option value="雨花" label="雨花">雨花</option>
+											<option value="岳麓" label="岳麓">岳麓</option>
+											<option value="天心" label="天心">天心</option>
+											<option value="开福" label="开福">开福</option>
+										    <option value="芙蓉" label="芙蓉">芙蓉</option>
+											<option value="湘潭" label="湘潭">湘潭</option>
+										    </optgroup>
+                                        {% elif s_city == '深圳'%}
+                                            <optgroup id="city-optgroup-Shenzhen" label="深圳">
+											<option value="all" label="全部">全部</option>
+											<option value="福田区" label="福田区">福田区</option>
+											<option value="南山区" label="南山区">南山区</option>
+											<option value="龙岗区" label="龙岗区">龙岗区</option>
+											<option value="宝安区" label="宝安区">宝安区</option>
+											<option value="罗湖区" label="罗湖区">罗湖区</option>
+											<option value="龙华区" label="龙华区">龙华区</option>
+											<option value="盐田区" label="盐田区">盐田区</option>
+											<option value="光明区" label="光明区">光明区</option>
+										    <option value="坪山区" label="坪山区">坪山区</option>
+											<option value="大鹏新区" label="大鹏新区">大鹏新区</option>
+											<option value="惠州" label="惠州">惠州</option>
+											<option value="东莞" label="东莞">东莞</option>
+										    </optgroup>
+                                        {% elif s_city == '太原'%}
+                                            <optgroup id="city-optgroup-Taiyuan" label="太原">
+											<option value="all" label="全部">全部</option>
+											<option value="杏花岭区" label="杏花岭区">杏花岭区</option>
+											<option value="迎泽区" label="迎泽区">迎泽区</option>
+											<option value="万柏林区" label="万柏林区">万柏林区</option>
+											<option value="小店区" label="小店区">小店区</option>
+											<option value="尖草坪区" label="尖草坪区">尖草坪区</option>
+											<option value="普源区" label="普源区">普源区</option>
+											<option value="阳曲县" label="阳曲县">阳曲县</option>
+											<option value="娄烦县" label="娄烦县">娄烦县</option>
+										    <option value="古交市" label="古交市">古交市</option>
+											<option value="清徐县" label="清徐县">清徐县</option>
+											<option value="榆次区" label="榆次区">榆次区</option>
+										    </optgroup>
+                                        {% elif s_city == '南昌'%}
+                                            <optgroup id="city-optgroup-Nanchang" label="南昌">
+											<option value="all" label="全部">全部</option>
+											<option value="青山湖区" label="青山湖区">青山湖区</option>
+											<option value="东湖区" label="东湖区">东湖区</option>
+											<option value="西湖区" label="西湖区">西湖区</option>
+											<option value="青云谱区" label="青云谱区">青云谱区</option>
+											<option value="进贤县" label="进贤县">进贤县</option>
+											<option value="湾里区" label="湾里区">湾里区</option>
+											<option value="安义县" label="安义县">安义县</option>
+											<option value="南昌县" label="南昌县">南昌县</option>
+										    <option value="新建区" label="新建区">新建区</option>
+											<option value="红谷滩" label="红谷滩">红谷滩</option>
+											<option value="高新区" label="高新区">高新区</option>
+											<option value="经开区" label="经开区">经开区</option>
+										    </optgroup>
+                                        {% elif s_city == '苏州'%}
+                                            <optgroup id="city-optgroup-Suzhou" label="苏州">
+											<option value="all" label="全部">全部</option>
+											<option value="高新" label="高新">高新</option>
+											<option value="姑苏" label="姑苏">姑苏</option>
+											<option value="相城" label="相城">相城</option>
+											<option value="吴江" label="吴江">吴江</option>
+											<option value="常熟" label="常熟">常熟</option>
+											<option value="张家港" label="张家港">张家港</option>
+											<option value="昆山" label="昆山">昆山</option>
+											<option value="太仓" label="太仓">太仓</option>
+										    <option value="吴中" label="吴中">吴中</option>
+											<option value="工业园区" label="工业园区">工业园区</option>
+										    </optgroup>
+                                        {% elif s_city == '无锡'%}
+                                            <optgroup id="city-optgroup-Wuxing" label="无锡">
+											<option value="all" label="全部">全部</option>
+											<option value="滨湖" label="滨湖">滨湖</option>
+											<option value="惠山" label="惠山">惠山</option>
+											<option value="梁溪" label="梁溪">梁溪</option>
+											<option value="新吴" label="新吴">新吴</option>
+											<option value="锡山" label="锡山">锡山</option>
+											<option value="宜兴市" label="宜兴市">宜兴市</option>
+											<option value="江阴市" label="江阴市">江阴市</option>
+										    </optgroup>
+                                        {% elif s_city == '武汉'%}
+                                            <optgroup id="city-optgroup-Wuhan" label="武汉">
+											<option value="all" label="全部">全部</option>
+											<option value="汉南" label="汉南">汉南</option>
+											<option value="蔡甸" label="蔡甸">蔡甸</option>
+											<option value="江夏" label="江夏">江夏</option>
+											<option value="黄陂" label="黄陂">黄陂</option>
+											<option value="新洲" label="新洲">新洲</option>
+											<option value="江岸" label="江岸">江岸</option>
+											<option value="江汉" label="江汉">江汉</option>
+											<option value="沌口开发区" label="沌口开发区">沌口开发区</option>
+										    <option value="硚口" label="硚口">硚口</option>
+											<option value="东西湖" label="东西湖">东西湖</option>
+											<option value="武昌" label="武昌">武昌</option>
+											<option value="青山" label="青山">青山</option>
+											<option value="洪山" label="洪山">洪山</option>
+                                            <option value="汉阳" label="汉阳">汉阳</option>
+                                            <option value="东湖高薪" label="东湖高薪">东湖高薪</option>
+                                            <option value="汉川市" label="汉川市">汉川市</option>
+                                            <option value="鄂州" label="鄂州">鄂州</option>
+										    </optgroup>
+                                        {% elif s_city == '广州'%}
+                                            <optgroup id="city-optgroup-Guangzhou" label="广州">
+											<option value="all" label="全部">全部</option>
+											<option value="南沙" label="南沙">南沙</option>
+											<option value="荔湾" label="荔湾">荔湾</option>
+											<option value="越秀" label="越秀">越秀</option>
+											<option value="海珠" label="海珠">海珠</option>
+											<option value="天河" label="天河">天河</option>
+											<option value="白云" label="白云">白云</option>
+											<option value="黄埔" label="黄埔">黄埔</option>
+											<option value="番禺" label="番禺">番禺</option>
+										    <option value="花都" label="花都">花都</option>
+											<option value="增城" label="增城">增城</option>
+											<option value="从化" label="从化">从化</option>
+											<option value="佛山" label="佛山">佛山</option>
+											<option value="江门" label="江门">江门</option>
+                                            <option value="清远" label="清远">清远</option>
+										    </optgroup>
+                                        {% endif %}
+								  </select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 col-lg-3">
+							<div class="single-field">
+								<h4>房型:</h4>
+								<div class="select-arrow">
+									<select name="type">
+										  <option value="all">全部</option>
+										  <option value="住宅">住宅</option>
+										  <option value="别墅">别墅</option>
+										  <option value="写字楼">写字楼</option>
+										  <option value="商铺">商铺</option>
+										  <option value="底商">底商</option>
+										  <option value="酒店式公寓">酒店式公寓</option>
+								  </select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-3">
+							<div class="single-field">
+								<h4>户型:</h4>
+								<div class="select-arrow">
+									<select name="room">
+										  <option value="all">全部</option>
+										  <option value="1室">一室</option>
+										  <option value="2室">两室</option>
+										  <option value="3室">三室</option>
+										  <option value="4室">四室</option>
+										  <option value="5室">五室及以上</option>
+								  </select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-3">
+							<div class="single-field">
+								<h4>筛选您预期的房屋</h4>
+							  <input value="筛选" type="submit">
+							</div>
+						</div>
+                    </form>
+                </div>
+        </div>
+    </div>
+    </div>
+    </form>
+		  </div>
+	  </div>
+    </form>
+  </div>
+
+</div>
+	<!-- Recent Properties Start -->
+	<div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-12">
+	<p>&thinsp;</p>	<p>&thinsp;</p>
+	</div>
+	<div class="properties">
+		<div class="container">
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <h1><strong>筛选结果</strong></h1>
+    <div class="border-shape"></div>
+    <h3>根据您的筛选方案，我们列出了以下符合条件的房屋</h3>
+  </div>
+</div>
+<DIV class="search">
+<DIV class="container">
+<DIV class="row">
+<DIV class="col-md-12">
+<FORM style="font-size: 20px;" action="#">
+
+<div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-12">
+	<p>&thinsp;</p>
+	</div>
+</FORM>
+</div>
+	  </div>
+			<div class="row">
+            <style>
+                table{
+                    border: 2px solid black;
+                    width:97%;
+                    height: auto;
+                }
+                    th{
+                        border: 2px solid black;
+                        text-align: center;
+                        width: 20%;
+                        height: 50px;
+                    }
+                td{
+                    border: 2px solid black;
+                    width: 20%;
+                    height: 50px;
+                    text-align: center;
+                }
+                </style>
+            <table>
+            <tr>
+                <th>楼盘</th>
+                <th>地区</th>
+                <th>价格</th>
+                <th>户型</th>
+                <th>房型</th>
+            </tr>
+            <tr>
+                {% for sr in sel1 %}
+                    <td> {{sr.properties }}</td>
+                    <td> {{ sr.district }}</td>
+                    <td> {{ sr.price }}{{ sr.unit }}</td>
+                    <td> {% if sr.layout %}{{ sr.layout }}{% else %} 暂无数据 {% endif %} </td>
+                    <td> {{ sr.wkind}}</td>
+                    </tr>
+                {% empty %}
+                    <h3>没搜索到</h3>
+                {% endfor %}
+            </table>
+                <!--
+				<div class="col-md-4 col-sm-6 col-xs-12 col-lg-3 col-lg-offset-0">
+					<div class="single-room">
+						<img src="static/images/cat1.jpg" alt="">
+						<div class="room-overlay">
+							<div class="roomdetails-overlay">
+								<div class="room-details">
+									<span class="room-price" value="320">320万</span>
+									<h2>XXXXX</h2>
+									<a href="index3.html" class="readmore-button">查看</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12 col-lg-3 col-lg-offset-1">
+					<div class="single-room">
+						<img src="static/images/cat3.jpg" alt="">
+						<div class="room-overlay">
+							<div class="roomdetails-overlay">
+								<div class="room-details">
+									<span class="room-price" value="660">660万</span>
+									<h2>XXXX</h2>
+									<a href="index3.html" class="readmore-button">查看</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-lg-3 col-lg-offset-1">
+					<div class="single-room">
+						<img src="static/images/cat4.jpg" alt="">
+						<div class="room-overlay">
+							<div class="roomdetails-overlay">
+								<div class="room-details col-lg-12">
+									<span class="room-price" value="290">290万</span>
+									<h2>XXXXX</h2>
+									<a href="index3.html" class="readmore-button">查看</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-lg-3">
+					<div class="single-room">
+						<img src="static/images/cat5.jpg" alt="">
+						<div class="room-overlay">
+							<div class="roomdetails-overlay">
+								<div class="room-details">
+									<span class="room-price" value="175">175万</span>
+									<h2>XXXXXX</h2>
+									<a href="index3.html" class="readmore-button">查看</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-lg-3 col-lg-offset-1">
+					<div class="single-room">
+						<img src="static/images/cat6.jpg" alt="">
+						<div class="room-overlay">
+							<div class="roomdetails-overlay">
+								<div class="room-details">
+									<span class="room-price" value="365">365万</span>
+									<h2>XXXXXXX</h2>
+									<a href="index3.html" class="readmore-button">查看</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-lg-3 col-lg-offset-1">
+					<div class="single-room">
+						<img src="static/images/cat7.jpg" alt="">
+						<div class="room-overlay">
+							<div class="roomdetails-overlay">
+								<div class="room-details">
+									<span class="room-price" value="430">430万</span>
+									<h2>XXXXX</h2>
+									<a href="index3.html" class="readmore-button">查看</a>
+								</div>
+							</div>
+                            -->
+						</div>
+					</div>
+				</div>
+</div>
+  </div>
+</div>
+	<!-- Recent Properties End -->
+
+
+
+
+
+	<a href="#" class="scrollup">
+		<i class="fa fa-angle-up"></i>
+	</a>
+
+</div>
+
+<script> show_main2() </script>
+<script src="static/js/jquery-2.2.4.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/jquery-ui.min.js"></script>
+<script src="static/js/bootstrap-datepicker.min.js"></script>
+<script src="static/js/hoverIntent.js"></script>
+<script src="static/js/superfish.js"></script>
+<script src="static/js/jquery.slicknav.js"></script>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="static/js/owl.animate.js"></script>
+<script src="static/js/jquery.bxslider.min.js"></script>
+<script src="static/js/jquery.mixitup.min.js"></script>
+<script src="static/js/jquery.magnific-popup.min.js"></script>
+<script src="static/js/waypoints.min.js"></script>
+<script src="static/js/jquery.counterup.min.js"></script>
+<script src="static/js/modernizr.min.js"></script>
+<script src="static/js/custom.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,680 @@
+﻿<!--作者：昝良士、张晨旭、何岷勋 创建时间：2019.8.30 最后修改时间：2019.9.10-->
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+<!-- Title -->
+<title>主页面</title>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="static/css/superfish.css">
+<link rel="stylesheet" href="static/css/slicknav.css">
+<link rel="stylesheet" href="static/css/animate.css">
+<link rel="stylesheet" href="static/css/jquery.bxslider.css">
+<link rel="stylesheet" href="static/css/hover.css">
+<link rel="stylesheet" href="static/css/magnific-popup.css">
+<link rel="stylesheet" href="static/css/spacing.css">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/responsive.css">
+
+
+<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 logo col-lg-4 col-lg-offset-5">
+					<a href="indexbj.html"><img src="/static/img/logo.png" alt=""></a>
+				</div>
+				<div class="col-md-9 col-sm-9 nav-wrapper col-lg-2">
+					<!-- Nav Start -->
+					<nav>
+						<ul class="sf-menu" id="menu">
+							<li class="active"><a href="/">回到首页</a></li>
+						</ul>
+					</nav>
+					<!-- Nav End -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+<body>
+
+<div id="preloader">
+	<div id="status"></div>
+</div>
+
+<div class="page-wrapper">
+
+	<!-- Top Bar Start -->
+	<div class="top-bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 top-contact">
+					<div class="list"><em class="fa fa-envelope"></em> <a> wotainanle@email.com</a></div>
+					<div class="list"><em class="fa fa-phone"></em> 12580 </div>
+                    <li class="nav-item">
+                            {% if request.session.is_login %}
+                                <a class="button-success pure-button" href="/information/">{{ request.session.user_name}}</a>
+                                <a class="button-success pure-button" href="/logout/">退出</a>
+                            {% else %}
+                                <a class="button-success pure-button" href="/register/">注册</a>
+                                <a class="button-success pure-button" href="/login/">登录</a>
+                            {% endif %}
+                    </li>
+				</div>
+            </div>
+		</div>
+	</div>
+	<!-- Top Bar End -->
+
+	<!-- Slider Start -->
+	<section class="main-slider">
+		<div class="slide-single">
+			<div class="overlay"></div>
+		  <div class="text">
+				<div class="this-item">
+				  <h2 class="text-center"><strong>欢迎来到北京城市房价分析预测系统</strong></h2>
+				</div>
+				<div class="this-item col-lg-7 col-lg-offset-3">
+					<form role="search" class="col" action="/result1" method="get">
+					    <input type="text" style = "height:58px;width:225px" class="this-item col-lg-offset-4 col-lg-4" placeholder="搜索您心仪的小区" name = "search_Info">
+                        <button class="" name = 'searchCity' value = '北京' type="submit" style="width: 70px;height: 58px;font-size: 20px;background-color: #27ae60;;color: white;">搜索</button>
+                    </form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Slider End -->
+
+	<!-- properties Search End -->
+    <form role="houseSelect" class="col" action="/result2" method="get">
+	<div class="search">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form action="#">
+					  <div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-3">
+							<div class="single-field">
+								<h4><input type ='text' name = 'city' value = '北京' style="background-color: #f2f3f3;width: 35px;height: auto;">区域:</h4>
+								<div class="select-arrow">
+									<select name="region">
+											<optgroup id="city-optgroup-Beijing" label="北京">
+											<option value="all" label="全部">全部</option>
+											<option value="东城" label="东城">东城</option>
+											<option value="西城" label="西城">西城</option>
+											<option value="朝阳" label="朝阳">朝阳</option>
+											<option value="海淀" label="海淀">海淀</option>
+											<option value="丰台" label="丰台">丰台</option>
+											<option value="石景山" label="石景山">石景山</option>
+											<option value="通州" label="通州">通州</option>
+											<option value="昌平" label="昌平">昌平</option>
+										    <option value="大兴" label="大兴">大兴</option>
+											<option value="亦庄开发区" label="亦庄开发区">亦庄开发区</option>
+											<option value="顺义" label="顺义">顺义</option>
+											<option value="房山" label="房山">房山</option>
+											<option value="门头沟" label="门头沟">门头沟</option>
+                                            <option value="平谷" label="平谷">平谷</option>
+                                            <option value="怀柔" label="怀柔">怀柔</option>
+                                            <option value="密云" label="密云">密云</option>
+                                            <option value="延庆" label="延庆">延庆</option>
+										    </optgroup>
+								  </select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 col-lg-3">
+							<div class="single-field">
+								<h4>房型:</h4>
+								<div class="select-arrow">
+									<select name="type">
+										  <option value="all">全部</option>
+										  <option value="住宅">住宅</option>
+										  <option value="别墅">别墅</option>
+										  <option value="写字楼">写字楼</option>
+										  <option value="商铺">商铺</option>
+										  <option value="底商">底商</option>
+										  <option value="酒店式公寓">酒店式公寓</option>
+								  </select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-3">
+							<div class="single-field">
+								<h4>户型:</h4>
+								<div class="select-arrow">
+									<select name="room">
+										  <option value="all">全部</option>
+										  <option value="1室">一室</option>
+										  <option value="2室">两室</option>
+										  <option value="3室">三室</option>
+										  <option value="4室">四室</option>
+										  <option value="5室">五室及以上</option>
+								  </select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 col-lg-offset-0 col-lg-3">
+							<div class="single-field">
+								<h4>筛选您预期的房屋</h4>
+							  <input value="筛选" type="submit">
+							</div>
+						</div>
+                    </form>
+                </div>
+        </div>
+    </div>
+    </div>
+    </form>
+		  </div>
+	  </div>
+    </form>
+  </div>
+
+</div>
+<!-- Featured Box Start -->
+	<div class="why-choose-us bg-gray">
+		<div class="container">
+		  <div class="row">
+				<div class="col-md-12">
+				  <h1><strong>该区域的房价分析</strong></h1>
+				  <div class="border-shape"></div>
+				  <h3>我们根据您所选区域房屋的售价和成交记录制作了房价分析图</h3>
+				</div>
+		   		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <br><br><br><br><br><br><br><br>
+	<input type="button" id="show2" onClick="show_main2()" value="房价">
+	<input type="button" id="show4" onClick="show_main4()" value="户型">
+	<div id="main2" style="height:400px"></div>
+	<div id="main3" style="height:400px"></div>
+	<div id="main4" style="height:400px"></div>
+    <div id="main5" style="height:600px"></div>
+
+
+
+
+
+
+	<a href="#" class="scrollup">
+		<i class="fa fa-angle-up"></i>
+	</a>
+
+</div>
+
+
+<!-- Scripts -->
+<script src="static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '北京不同地区房价对比',
+        subtext: '北京市'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : ['朝阳','海淀','门头沟','亦庄开发区','丰台','通州','石景山','昌平','大兴','顺义','房山']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value} 元'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'价格',
+            type:'bar',
+            data:{{price_list}},
+            barWidth:30,
+          	barCategoryGap:'20%',
+          	barGap:'10%',
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        }
+    ]
+};
+
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '房屋数量关于房价的分布',
+        subtext: '北京市'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['1w以下','1w-1w5','1w5-2w','2w-2w5','2w5-3w','3w-4w','4w-5w','5w以上']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'房价',
+            type:'bar',
+            data:{{ price_range }},
+          	barCategoryGap:'70%',
+          	markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+    ]
+};
+
+        myChart.setOption(option);
+    </script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main3'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '房屋数量关于面积的分布',
+        subtext: '北京市'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['50㎡以下','60㎡','70㎡','80㎡','90㎡','100㎡','110㎡','120㎡','130㎡','140㎡','150㎡','150㎡以上']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'房价',
+            type:'bar',
+            data:[600, 650, 840, 1020, 800, 1300, 1160, 924, 818, 631, 715, 808],
+          	barCategoryGap:'70%',
+          	markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+    ]
+};
+        myChart.setOption(option);
+    </script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main4'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '房屋数量关于户型的分布',
+        subtext: '北京市'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['一室','两室','三室','四室','五室及以上'],
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'房价',
+            type:'bar',
+            data:{{room_range}},
+          	barCategoryGap:'70%',
+          	markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+    ]
+};
+        myChart.setOption(option);
+    </script>
+<script type="text/javascript">
+	function show_main2()
+		{
+			document.getElementById("main2").style.display="block";
+			document.getElementById("main3").style.display="none";
+			document.getElementById("main4").style.display="none";
+		}
+	function show_main3()
+		{
+			document.getElementById("main3").style.display="block";
+			document.getElementById("main2").style.display="none";
+			document.getElementById("main4").style.display="none";
+		}
+	function show_main4()
+		{
+			document.getElementById("main4").style.display="block";
+			document.getElementById("main3").style.display="none";
+			document.getElementById("main2").style.display="none";
+		}
+</script>
+      <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main5'));
+
+        // 指定图表的配置项和数据
+        var option = {
+  	title : {
+      	textStyle:
+      	{
+          		color : 'black'
+      	},
+        x:'center',
+        text: '该城市各区域房价变化',
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+       padding: 40,    // [5, 10, 15, 20]
+        itemGap: 1,
+        selected: {
+            '全部'   :true,
+          	'朝阳' : false,
+          	'海淀' : false,
+          	'东城' : false,
+			'西城' : false,
+			'丰台' : false,
+			'通州' : false,
+			'石景山' : false,
+			'昌平' : false,
+			'大兴' : false,
+			'顺义' : false,
+         	'房山' : false,
+        	'门头沟' : false,
+			'密云' : false,
+			'怀柔' : false,
+         	'延庆' : false
+        },
+          data : ['全部','朝阳','海淀','东城','西城','丰台','通州','石景山','昌平','大兴','顺义','房山','门头沟','密云','怀柔','延庆']
+    },
+    toolbox: {
+      	orient:'vertical',
+      	y:'center',
+        show : true,
+        feature : {
+            mark : {show: false},
+            dataView : {show: false, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: false}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['2018.9','2018.10','2018.11','2018.12','2019.1','2019.2','2019.3','2019.4',
+                    '2019.5','2019.6','2019.7','2019.8']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min: 20000,
+          	axisLabel : {
+                formatter: '{value}  元/平(均价)'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'全部',
+            type:'line',
+
+            data:[59943,59602,59868,60017,60125,60487,59993,59809,60142,60061,59888,58870]
+        },
+        {
+            name:'朝阳',
+            type:'line',
+
+            data:[76009,74399,74312,74379,75091,74705,74456,74155,74253,73972,73457,73427]
+        },
+        {
+            name:'海淀',
+            type:'line',
+
+            data:[91574,90970,90353,89301,89442,89396,90427,90010,89931,90334,90688,90704]
+        },
+        {
+            name:'东城',
+            type:'line',
+
+            data:[103860,102732,102432,100024,100108,99316,101061,102734,102908,104216,104557,104505]
+        },
+        {
+            name:'西城',
+            type:'line',
+
+            data:[121827,118330,119214,119598,121759,119837,120324,120680,120759,120272,121767,121702]
+        },
+        {
+            name:'丰台',
+            type:'line',
+
+            data:[61298,60583,60583,60757,61017,61326,60792,60682,60304,60099,59941,59892]
+        },
+       {
+            name:'通州',
+            type:'line',
+
+            data:[49339,48581,48556,48613,48379,48486,48962,49346,49661,50000,49802,49711]
+        },
+       {
+            name:'石景山',
+            type:'line',
+
+            data:[54183,52959,52233,52794,52164,52655,52049,52967,53316,52598,52531,52521]
+        },
+        {
+            name:'昌平',
+            type:'line',
+
+            data:[43996,43375,42878,42545,42340,42696,42768,42844,42792,42700,42667,42614]
+        },
+        {
+            name:'大兴',
+            type:'line',
+
+            data:[46438,45700,44618,44421,44574,44800,44995,45144,44738,44335,43829,43761]
+        },
+        {
+            name:'顺义',
+            type:'line',
+
+            data:[42941,42771,42792,42899,42976,43947,43707,43460,43017,43142,42745,42711]
+        },
+        {
+            name:'房山',
+            type:'line',
+
+            data:[31534,30967,30335,29908,30203,30876,30762,30795,30794,30766,30629,30661]
+        },
+        {
+            name:'门头沟',
+            type:'line',
+
+            data:[40687,40648,39487,40438,40225,40885,40525,40987,40948,40260,40016,41081]
+        },
+         {
+            name:'密云',
+            type:'line',
+
+            data:[26061,25817,25372,25492,25385,25293,25659,25620,25313,25516,25259,25232]
+        },
+        {
+            name:'怀柔',
+            type:'line',
+
+            data:[32654,32688,32205,32310,32053,32279,32057,32188,32179,32032,31772,31869]
+        },
+        {
+            name:'平谷',
+            type:'line',
+
+            data:[26229,25148,24810,24120,23039,23907,24525,24709,24360,24267,24144,24218]
+        },
+         {
+            name:'延庆',
+            type:'line',
+
+            data:[25736,25583,25023,24160,24203,24246,25338,25550,25373,25111,24618,24661]
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+ </script>
+
+
+<script> show_main2() </script>
+<script src="static/js/jquery-2.2.4.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/jquery-ui.min.js"></script>
+<script src="static/js/bootstrap-datepicker.min.js"></script>
+<script src="static/js/hoverIntent.js"></script>
+<script src="static/js/superfish.js"></script>
+<script src="static/js/jquery.slicknav.js"></script>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="static/js/owl.animate.js"></script>
+<script src="static/js/jquery.bxslider.min.js"></script>
+<script src="static/js/jquery.mixitup.min.js"></script>
+<script src="static/js/jquery.magnific-popup.min.js"></script>
+<script src="static/js/waypoints.min.js"></script>
+<script src="static/js/jquery.counterup.min.js"></script>
+<script src="static/js/modernizr.min.js"></script>
+<script src="static/js/custom.js"></script>
+
+</body>
+
+</html>
+
